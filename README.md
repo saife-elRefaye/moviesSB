@@ -51,8 +51,8 @@ Full-stack Movie Application with:
 4. Access `http://localhost:4200`
 
 ### Sample Admin/User Credentials
-- Admin: `admin@example.com` / `adminpass`
-- User: `user@example.com` / `userpass`
+- Admin: `admin` / `admin123`
+- User: `user` / `user123`
 
 ## License
 MIT
