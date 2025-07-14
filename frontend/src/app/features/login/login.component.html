@@ -1,0 +1,16 @@
+<div class="login-container">
+    <h2 class="text-xl font-semibold mb-4 text-center">Login</h2>
+    <div *ngIf="errorMessage" class="error text-red-600">{{ errorMessage }}</div>
+
+    <form class="bg-white p-6 rounded shadow-md w-full max-w-sm mx-auto mt-10" (submit)="login(); $event.preventDefault()">
+        <label>Username:</label>
+        <input class="p-2 border rounded w-full mb-4" [(ngModel)]="username" name="username" required />
+
+        <label>Password:</label>
+        <input class="p-2 border rounded w-full mb-4" [(ngModel)]="password" type="password" name="password" required />
+
+        <button class="bg-purple-600 text-white px-4 py-2 w-full rounded hover:bg-purple-700 mt-2" type="submit">
+            Login
+        </button>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+<div class="user-dashboard">
+  <h2>User Dashboard</h2>
+
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <ul *ngIf="movies.length > 0">
+    <li *ngFor="let movie of movies">
+      <img [src]="movie.poster" alt="{{ movie.title }}" width="50" />
+      <strong>{{ movie.title }}</strong> ({{ movie.year }}) - {{ movie.type }}<br/>
+      <span>
+        Rate:
+        <button *ngFor="let star of [1,2,3,4,5]" (click)="rateMovie(movie.id, star)">★</button>
+      </span>
+    </li>
+  </ul>
+
+  <div *ngIf="!loading && movies.length === 0">No movies available.</div>
+
+  <div class="pagination-controls">
+    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 0">Prev</button>
+    <span> Page {{ currentPage + 1 }} of {{ totalPages }} </span>
+    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage + 1 >= totalPages">Next</button>
+  </div>
+</div>

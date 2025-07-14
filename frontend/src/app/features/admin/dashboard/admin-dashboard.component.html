@@ -1,0 +1,39 @@
+<div class="p-4">
+  <h2 class="text-xl font-bold mb-4">Admin Dashboard</h2>
+
+  <div class="mb-4 flex gap-2">
+    <input [(ngModel)]="searchTerm" placeholder="Search OMDB..." class="border p-2 w-1/2 rounded" />
+    <button (click)="search()" class="bg-blue-600 text-white px-4 py-2 rounded">Search</button>
+  </div>
+
+  <div *ngIf="movies.length > 0" class="mb-6">
+    <h3 class="text-lg font-semibold mb-2">OMDB Results</h3>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div *ngFor="let movie of movies" class="border rounded p-2">
+        <img [src]="movie.Poster" alt="{{ movie.Title }}" class="w-full h-60 object-cover mb-2" />
+        <p class="font-semibold">{{ movie.Title }} ({{ movie.Year }})</p>
+        <label><input type="checkbox" (change)="toggleSelection(movie, $event.target.checked)" /> Select</label>
+      </div>
+    </div>
+
+    <div class="mt-4 flex justify-between items-center">
+      <button (click)="goToPreviousPage()" class="px-4 py-2 bg-blue-600 text-white rounded">Previous</button>
+      <span>Page {{ currentPage }}</span>
+      <button (click)="goToNextPage()" class="px-4 py-2 bg-blue-600 text-white rounded">Next</button>
+    </div>
+
+    <div class="mt-4">
+      <button (click)="addSelectedToDatabase()" class="bg-green-600 text-white px-6 py-2 rounded">Add Selected to DB</button>
+    </div>
+  </div>
+
+  <div *ngIf="dbMovies.length > 0" class="mt-8">
+    <h3 class="text-lg font-semibold mb-2">Movies in Your Database</h3>
+    <ul class="space-y-2">
+      <li *ngFor="let movie of dbMovies" class="border p-2 flex justify-between items-center rounded">
+        <span>{{ movie.title }} ({{ movie.year }})</span>
+        <button (click)="deleteMovieFromDatabase(movie.id)" class="bg-red-600 text-white px-3 py-1 rounded">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>

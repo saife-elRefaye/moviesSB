@@ -1,0 +1,22 @@
+<div class="admin-dashboard">
+  <h2>Admin Dashboard</h2>
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search OMDB..." />
+  <button (click)="searchMovies()">Search</button>
+
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="success" class="success">{{ success }}</div>
+
+  <div *ngIf="movieResults.length > 0">
+    <button (click)="addSelectedToDB()">Add Selected to DB</button>
+    <button (click)="removeSelectedFromDB()">Remove Selected from DB</button>
+  </div>
+
+  <ul>
+    <li *ngFor="let movie of movieResults">
+      <input type="checkbox" (change)="toggleSelection(movie)" />
+      <img [src]="movie.poster" alt="{{ movie.title }}" width="50" />
+      <strong>{{ movie.title }}</strong> ({{ movie.year }}) - {{ movie.type }}
+    </li>
+  </ul>
+</div>

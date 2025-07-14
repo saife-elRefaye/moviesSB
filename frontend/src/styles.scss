@@ -1,0 +1,152 @@
+// =======================
+// 🎨 Global Style System
+// =======================
+
+// Font
+$font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+
+// Colors
+$color-primary: #1d4ed8;
+$color-primary-hover: #2563eb;
+$color-secondary: #6b7280;
+$color-danger: #dc2626;
+$color-bg: #f9fafb;
+$color-white: #ffffff;
+$color-border: #e5e7eb;
+$color-muted: #9ca3af;
+
+// Border radius
+$radius: 8px;
+
+// =======================
+// 🌐 Global Reset & Base
+// =======================
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: $font-family;
+  background-color: $color-bg;
+  color: #111827;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: $color-primary;
+
+  &:hover {
+    color: $color-primary-hover;
+  }
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  padding: 0.5rem;
+  border-radius: $radius;
+  border: 1px solid $color-border;
+  background-color: $color-white;
+  transition: border 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+}
+
+// =======================
+// 🔧 Utility Classes
+// =======================
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: $color-muted;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: $radius;
+  font-weight: 500;
+  background-color: $color-primary;
+  color: $color-white;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $color-primary-hover;
+  }
+
+  &.danger {
+    background-color: $color-danger;
+
+    &:hover {
+      background-color: darken($color-danger, 10%);
+    }
+  }
+
+  &.outline {
+    background-color: transparent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+
+    &:hover {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.card {
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+
+  &.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  &.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  &.cols-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-4 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-4 { padding: 2rem; }
+
+.rounded { border-radius: $radius; }
+.shadow { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); }
+
+.bg-white { background-color: $color-white; }
+.bg-primary { background-color: $color-primary; color: $color-white; }
+

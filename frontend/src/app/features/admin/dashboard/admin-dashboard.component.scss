@@ -1,0 +1,53 @@
+.admin-dashboard {
+  padding: 2rem;
+
+  h2 {
+    margin-bottom: 1rem;
+    color: #1d4ed8;
+  }
+
+  input {
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    width: 60%;
+  }
+
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+
+    .movie-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+      padding: 1rem;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+      }
+
+      p {
+        font-weight: 600;
+        margin-top: 0.5rem;
+      }
+
+      label {
+        display: block;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  .pagination-controls {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}

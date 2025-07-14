@@ -1,0 +1,36 @@
+<div class="p-4">
+  <h2 class="text-xl font-bold mb-4">User Dashboard</h2>
+
+  <div class="mb-4 flex gap-2">
+    <input [(ngModel)]="searchTerm" placeholder="Search movies" class="border p-2 w-1/2 rounded" />
+    <button (click)="search()" class="bg-green-600 text-white px-4 py-2 rounded">Search</button>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div *ngFor="let movie of movies" class="border p-2 rounded shadow hover:bg-gray-100" (click)="viewDetails(movie)">
+      <img [src]="movie.poster" alt="{{ movie.title }}" class="w-full h-60 object-cover mb-2" />
+      <h3 class="font-semibold">{{ movie.title }}</h3>
+      <p class="text-sm text-gray-500">{{ movie.year }}</p>
+    </div>
+  </div>
+
+  <div class="mt-4 flex justify-between items-center">
+    <button (click)="goToPreviousPage()" class="bg-green-600 text-white px-4 py-2 rounded">Previous</button>
+    <span>Page {{ page + 1 }} of {{ totalPages }}</span>
+    <button (click)="goToNextPage()" class="bg-green-600 text-white px-4 py-2 rounded">Next</button>
+  </div>
+
+  <div *ngIf="selectedMovie" class="mt-6 border p-4 rounded bg-gray-50 shadow">
+    <h2 class="text-lg font-semibold mb-2">{{ selectedMovie.title }}</h2>
+    <p><strong>Year:</strong> {{ selectedMovie.year }}</p>
+    <p><strong>Type:</strong> {{ selectedMovie.type }}</p>
+
+    <div class="mt-4">
+      <label for="rating" class="block mb-1">Rate this movie (1–5):</label>
+      <select [(ngModel)]="ratingValue" class="border p-2 rounded w-24">
+        <option *ngFor="let r of [1, 2, 3, 4, 5]" [value]="r">{{ r }}</option>
+      </select>
+      <button (click)="rateMovie(selectedMovie.id)" class="bg-purple-600 text-white px-3 py-1 rounded ml-2">Rate</button>
+    </div>
+  </div>
+</div>
